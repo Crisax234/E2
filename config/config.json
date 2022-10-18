@@ -1,0 +1,23 @@
+{
+  "development": {
+    "username": "cris_santander",
+    "password": null,
+    "database": "bbdd_training",
+    "host": "127.0.0.1",
+    "dialect": "postgres"
+  },
+  "test": {
+    "username": "cris_santander",
+    "password": null,
+    "database": "bbdd_training",
+    "host": "127.0.0.1",
+    "dialect": "postgres"
+  },
+  "production": {
+    "username": "cris_santander",
+    "password": null,
+    "database": "bbdd_training",
+    "host": "127.0.0.1",
+    "dialect": "postgres"
+  }
+}
