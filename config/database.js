@@ -2,19 +2,19 @@ require('dotenv').config()
 
 const config = {
     default: {
-      username: "cris_santander",
-      password: null,
+      username: "cristobal",
+      password: "CC1501AA",
       dialect: 'postgres',
-      database: "bbdd_training",
+      database: "bdd-app-web",
       host: '127.0.0.1',
     },
     development: {
       extend: 'default',
-      database: "bbdd_training",
+      database: "bdd-app-web",
     },
     test: {
       extend: 'default',
-      database: "bbdd_training",
+      database: "bdd-app-web",
     }
   };
 
