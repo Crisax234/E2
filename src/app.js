@@ -7,13 +7,14 @@ const cors = require('@koa/cors')
 const router = new KoaRouter();
 
 
-router.post('boss.create', '/boss', async (ctx) => {
+router.post('user.create', '/user', async (ctx) => {
     try {
 
-        const boss = await ctx.orm.Boss.create({
+        const user = await ctx.orm.User.create({
         name: ctx.request.body.name,
         password: ctx.request.body.password,
-        email: ctx.request.body.email
+        email: ctx.request.body.email,
+        rol: ctx.request.body.rol
         });
         ctx.status = 201;
     } catch (error) {
@@ -22,21 +23,24 @@ router.post('boss.create', '/boss', async (ctx) => {
   })
 
 
-router.get("boss.show", "/boss", async (ctx) => {
+router.get("user.show", "/user", async (ctx) => {
     try {
-        const bosses = await ctx.orm.Boss.findAll();
-        ctx.body = bosses;
+        const users = await ctx.orm.User.findAll();
+        ctx.body = users;
       } catch (error) {
         console.log(error);
         ctx.throw(404);
       }
 });
-router.post('form.create', '/form', async (ctx) => {
+
+
+router.post('solicitud.create', '/solicitud', async (ctx) => {
     try {
 
-        const form = await ctx.orm.Form.create({
-        nombre: ctx.request.body.nombre,
+        const solicitud = await ctx.orm.Solicitud.create({
+        titulo: ctx.request.body.titulo,
         presupuesto: ctx.request.body.presupuesto,
+        chasis: ctx.request.body.chasis,
         descripcion: ctx.request.body.descripcion,
         estado: ctx.request.body.estado
         });
@@ -47,10 +51,10 @@ router.post('form.create', '/form', async (ctx) => {
   })
 
 
-router.get("form.show", "/form", async (ctx) => {
+router.get("solicitud.show", "/solicitud", async (ctx) => {
     try {
-        const forms = await ctx.orm.Form.findAll();
-        ctx.body = forms;
+        const solicitudes = await ctx.orm.Solicitud.findAll();
+        ctx.body = solicitudes;
       } catch (error) {
         console.log(error);
         ctx.throw(404);
@@ -62,6 +66,6 @@ app.context.orm = orm;
 app.use(KoaBody());
 app.getMaxListeners()
 app.use(router.routes())
-app.listen(3000, function(){
-    console.log('Server running on https://localhost:3000')
+app.listen(4000, function(){
+    console.log('Server running on https://localhost:4000')
  });

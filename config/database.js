@@ -1,21 +1,25 @@
-require('dotenv').config()
+const dotenv = require('dotenv');
+dotenv.config();
 
-const config = {
-    default: {
-      username: "cristobal",
-      password: "CC1501AA",
-      dialect: 'postgres',
-      database: "bdd-app-web",
-      host: '127.0.0.1',
-    },
-    development: {
-      extend: 'default',
-      database: "bdd-app-web",
-    },
-    test: {
-      extend: 'default',
-      database: "bdd-app-web",
-    }
-  };
-
-module.exports = config;
+module.exports = {
+  "development": {
+    "username": process.env.DB_USER,
+    "password": process.env.DB_PASSWORD,
+    "database": process.env.DB_NAME,
+    "host": process.env.DB_HOST,
+    "dialect": "postgres"
+  },
+  "test": {
+    "username": process.env.DB_USER,
+    "password": process.env.DB_PASSWORD,
+    "database": process.env.DB_NAME,
+    "host": process.env.DB_HOST,
+  },
+  "production": {
+    "username": process.env.DB_USER,
+    "password": process.env.DB_PASSWORD,
+    "database": process.env.DB_NAME,
+    "host": process.env.DB_HOST,
+    "dialect": "postgres"
+  }
+};

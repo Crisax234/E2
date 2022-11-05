@@ -5,8 +5,8 @@ const path = require('path');
 const Sequelize = require('sequelize');
 const process = require('process');
 const basename = path.basename(__filename);
-const env = 'development';
-const config = require('../config/config.json')[process.env.NODE_ENV || 'development'];
+const env = process.env.NODE_ENV || 'development';
+const config = require('../config/database.js')[env];
 const db = {};
 
 let sequelize;
@@ -17,7 +17,8 @@ if (config.use_env_variable) {
     host: '127.0.0.1',
     dialect: 'postgres',
     port: 5432,
-});
+  });
+    
 }
 
 fs

@@ -1,22 +1,22 @@
 {
   "development": {
-    "username": "cristobal",
-    "password": "CC1501AA",
-    "database": "bdd-app-web",
+    "username": "web_user",
+    "password": "12345678",
+    "database": "web_db",
     "host": "127.0.0.1",
     "dialect": "postgres"
   },
   "test": {
-    "username": "cristobal",
-    "password": "CC1501AA",
-    "database": "bdd-app-web",
+    "username": "web_user",
+    "password": "12345678",
+    "database": "web_db",
     "host": "127.0.0.1",
     "dialect": "postgres"
   },
   "production": {
-    "username": "cristobal",
-    "password": "CC1501AA",
-    "database": "bdd-app-web",
+    "username": "web_user",
+    "password": "12345678",
+    "database": "web_db",
     "host": "127.0.0.1",
     "dialect": "postgres"
   }

@@ -1,26 +1,31 @@
 'use strict';
-
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
-  async up (queryInterface, Sequelize) {
-    await queryInterface.createTable('Forms', {
+  async up(queryInterface, Sequelize) {
+    await queryInterface.createTable('Simulacions', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      nombre: {
+      id_solicitud: {
+        type: Sequelize.INTEGER
+      },
+      chasis: {
         type: Sequelize.STRING
       },
-      presupuesto: {
-        type: Sequelize.STRING
+      hp: {
+        type: Sequelize.INTEGER
       },
-      descripcion: {
-        type: Sequelize.STRING
+      torque: {
+        type: Sequelize.INTEGER
+      },
+      costo: {
+        type: Sequelize.INTEGER
       },
       estado: {
-        type: Sequelize.STRING
+        type: Sequelize.BOOLEAN
       },
       createdAt: {
         allowNull: false,
@@ -32,8 +37,7 @@ module.exports = {
       }
     });
   },
-
-  async down (queryInterface, Sequelize) {
-    await queryInterface.dropTable('Forms');
+  async down(queryInterface, Sequelize) {
+    await queryInterface.dropTable('Simulacions');
   }
 };
