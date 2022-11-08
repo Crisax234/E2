@@ -1,24 +1,31 @@
 'use strict';
+
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable('Sessions', {
+    await queryInterface.createTable('Performances', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      userid: {
-        type: Sequelize.INTEGER,
-        references: { model: 'Mecanics', key: 'id' },
+      chasis_compatible: {
+        type: Sequelize.STRING
       },
-      tecnicid: {
-        type: Sequelize.INTEGER,
-        references: { model: 'Tecnics', key: 'id' },
+      nombre: {
+        type: Sequelize.STRING
       },
-      managerid: {
-        type: Sequelize.INTEGER,
-        references: { model: 'Managers', key: 'id' },
+      categoria: {
+        type: Sequelize.STRING
+      },
+      hp: {
+        type: Sequelize.INTEGER
+      },
+      torque: {
+        type: Sequelize.INTEGER
+      },
+      precio: {
+        type: Sequelize.INTEGER
       },
       createdAt: {
         allowNull: false,
@@ -27,10 +34,10 @@ module.exports = {
       updatedAt: {
         allowNull: false,
         type: Sequelize.DATE
-      },
+      }
     });
   },
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable('Sessions');
+    await queryInterface.dropTable('Performances');
   }
 };

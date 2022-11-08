@@ -1,35 +1,24 @@
 'use strict';
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable('Simulacions', {
+    await queryInterface.createTable('Pieza_simulacions', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      id_mecanico: {
+      id_performance: {
         type: Sequelize.INTEGER,
-        references: { model: 'Mecanics', key: 'id' },
+        references: { model: 'Performances', key: 'id' },
       },
-      id_car: {
+      id_look: {
         type: Sequelize.INTEGER,
-        references: { model: 'Cars', key: 'id' },
+        references: { model: 'Looks', key: 'id' },
       },
-      id_solicitud: {
-        type: Sequelize.INTEGER
-      },
-      hp: {
-        type: Sequelize.INTEGER
-      },
-      torque: {
-        type: Sequelize.INTEGER
-      },
-      costo: {
-        type: Sequelize.INTEGER
-      },
-      estado: {
-        type: Sequelize.BOOLEAN
+      id_simulacion: {
+        type: Sequelize.INTEGER,
+        references: { model: 'Simulacions', key: 'id' },
       },
       createdAt: {
         allowNull: false,
@@ -42,6 +31,6 @@ module.exports = {
     });
   },
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable('Simulacions');
+    await queryInterface.dropTable('Pieza_simulacions');
   }
 };

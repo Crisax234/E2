@@ -1,24 +1,36 @@
 'use strict';
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable('Sessions', {
+    await queryInterface.createTable('Simulacions', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      userid: {
+      id_mecanico: {
         type: Sequelize.INTEGER,
         references: { model: 'Mecanics', key: 'id' },
       },
-      tecnicid: {
+      id_car: {
         type: Sequelize.INTEGER,
-        references: { model: 'Tecnics', key: 'id' },
+        references: { model: 'Cars', key: 'id' },
       },
-      managerid: {
+      id_solicitud: {
         type: Sequelize.INTEGER,
-        references: { model: 'Managers', key: 'id' },
+        references: {model: 'Solicituds', key: 'id'},
+      },
+      hp: {
+        type: Sequelize.INTEGER
+      },
+      torque: {
+        type: Sequelize.INTEGER
+      },
+      costo: {
+        type: Sequelize.INTEGER
+      },
+      estado: {
+        type: Sequelize.BOOLEAN
       },
       createdAt: {
         allowNull: false,
@@ -27,10 +39,10 @@ module.exports = {
       updatedAt: {
         allowNull: false,
         type: Sequelize.DATE
-      },
+      }
     });
   },
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable('Sessions');
+    await queryInterface.dropTable('Simulacions');
   }
 };

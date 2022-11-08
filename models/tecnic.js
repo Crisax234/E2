@@ -13,6 +13,7 @@ module.exports = (sequelize, DataTypes) => {
       this.hasMany(models.Session, {
         foreignKey: 'id',
       });
+      
     }
   }
   Tecnic.init({

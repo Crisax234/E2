@@ -13,6 +13,11 @@ module.exports = (sequelize, DataTypes) => {
       this.hasMany(models.Session, {
         foreignKey: 'id',
       });
+      this.hasMany(models.Solicitud, {
+        foreignKey: 'id_manager',
+        onDelete: 'CASCADE',
+      });
+      
     }
   }
   Manager.init({

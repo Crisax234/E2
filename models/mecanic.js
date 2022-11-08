@@ -12,7 +12,7 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       this.hasMany(models.Simulacion, {
         foreignKey: 'id_mecanico',
-        onDelete: 'CASCADE'
+        onDelete: 'CASCADE',
       });
       this.hasMany(models.Play, {
         foreignKey: 'id_mecanico',

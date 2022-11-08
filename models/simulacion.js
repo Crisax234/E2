@@ -16,10 +16,15 @@ module.exports = (sequelize, DataTypes) => {
       this.belongsTo(models.Car, {
         foreignKey: 'id_car',
       });
+      this.belongsTo(models.Solicitud, {
+        foreignKey: 'id_solicitud',
+      });
+      this.hasMany(models.Pieza_simulacion, {
+        foreignKey: 'id_simulacion',
+      });
     }
   }
   Simulacion.init({
-    id_solicitud: DataTypes.INTEGER,
     hp: DataTypes.INTEGER,
     torque: DataTypes.INTEGER,
     costo: DataTypes.INTEGER,
