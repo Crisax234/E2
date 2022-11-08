@@ -14,9 +14,6 @@ module.exports = (sequelize, DataTypes) => {
         foreignKey: 'id_mecanico',
         onDelete: 'CASCADE',
       });
-      this.hasMany(models.Play, {
-        foreignKey: 'id_mecanico',
-      });
       this.hasMany(models.Session, {
         foreignKey: 'id',
       });
