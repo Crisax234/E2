@@ -3,19 +3,13 @@ const Router = require('koa-router');
 
 const router = new Router();
 
+// Solo manager puede eliminar una simulacion (admin)
+
 router.delete('simulacions.delete', '/delete/:id_simulacion', async (ctx) => {
     try {
-        // Buscamos ctx.params.id_Match
-        var found = false
         console.log(ctx.state.tokendata.simulacions);
 
-        ctx.state.tokendata.simulacions.forEach(simulacion => {
-            if (simulacion.id == ctx.params.id_simulacion) {
-                found = true;
-            };
-        });
-
-        if (found) {
+        if (ctx.state.tokendata.type === 'Manager') {
             const response = await ctx.orm.Simulacion.destroy({
                 where: { id: `${ctx.params.id_simulacion}` }
             })

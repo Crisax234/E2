@@ -13,8 +13,8 @@ module.exports = (sequelize, DataTypes) => {
       this.belongsTo(models.Performance, {
         foreignKey: 'id_performance',
       });
-      this.belongsTo(models.Looks, {
-        foreignKey: 'id_looks',
+      this.belongsTo(models.Look, {
+        foreignKey: 'id_look',
       });
       this.belongsTo(models.Simulacion, {
         foreignKey: 'id_simulacion',
@@ -22,6 +22,7 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   Pieza_simulacion.init({
+    categoria: DataTypes.STRING
   }, {
     sequelize,
     modelName: 'Pieza_simulacion',

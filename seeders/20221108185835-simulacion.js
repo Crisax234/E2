@@ -2,7 +2,7 @@ module.exports = {
   up: (queryInterface) => queryInterface.bulkInsert('Simulacions', [
     {
       id: 0,
-      id_mecanico: 1,
+      id_mecanico: 0,
       id_car: 0,
       id_solicitud: 0,
       hp: 306,
@@ -14,7 +14,7 @@ module.exports = {
     },
     {
       id: 1, 
-      id_mecanico: 0,
+      id_mecanico: 1,
       id_car: 0,
       id_solicitud: 1,
       hp: 306,

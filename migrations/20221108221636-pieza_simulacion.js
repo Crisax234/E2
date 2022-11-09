@@ -20,6 +20,9 @@ module.exports = {
         type: Sequelize.INTEGER,
         references: { model: 'Simulacions', key: 'id' },
       },
+      categoria: {
+        type: Sequelize.STRING,
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE
