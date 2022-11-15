@@ -34,7 +34,7 @@ router.post("/login", async (ctx) => {
                 var token = JWT.sign(payload, `${process.env.JWT_SECRET}`);
 
                 // se enviará el token
-                ctx.response.body = { token: token };
+                ctx.response.body = { token: token, user: mecanic , type: "Mecanico" };
 
                 ctx.status = 201;
             } else {
@@ -74,7 +74,7 @@ router.post("/login", async (ctx) => {
                 var token = JWT.sign(payload, `${process.env.JWT_SECRET}`);
 
                 // se enviará el token
-                ctx.response.body = { token: token };
+                ctx.response.body = { token: token, user: manager , type: "Manager" };
 
                 ctx.status = 201;
             } else {
