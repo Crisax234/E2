@@ -230,5 +230,26 @@ router.post('simulaciones.create', '/', async (ctx) => {
   }
 });
 
+//solo los mecanicos crean las simulaciones
+router.post('simulaciones.create', '/accept', async (ctx) => {
+  try {
+    const session = await ctx.orm.Session.findByPk(ctx.session.sessionid);
+    const manager = session.managerid;
+    if (manager){
+      //buscamos el auto, para poner los valores de fabrica
+      const id_simulacion = ctx.request.body.id_simulacion;
+      const simulacion = await ctx.orm.Simulacion.findByPk(id_simulacion);
+      simulacion.estado = true;
+      simulacion.save();
+
+      ctx.throw(simulacion.dataValues, 201);
+      }else{
+        ctx.throw("No eres Manager", 404);
+      }
+  } catch (error) {
+    ctx.throw(error);
+  }
+});
+
 
 module.exports = router;

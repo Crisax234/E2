@@ -11,17 +11,6 @@ module.exports = {
       createdAt: new Date(),
       updatedAt: new Date(),
     },
-    {
-      id: 1,
-      id_manager: 1,
-      id_car: 0,
-      titulo: "Segunda solicitud",
-      presupuesto: 2000000,
-      descripcion: "bmw z4 completada",
-      estado: true,
-      createdAt: new Date(),
-      updatedAt: new Date(),
-    },
 
   ]),
   down: (queryInterface) => queryInterface.bulkDelete('Solicituds', null, {}),
