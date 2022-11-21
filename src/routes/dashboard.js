@@ -16,10 +16,10 @@ router.get('dashboard.show', '/', async (ctx) => {
             costo_total_solicitudes += solicitudes[step].presupuesto;
         }
         ctx.body = [
-            {cant_simulaciones: cant_simulaciones},
-            {costo_total_simulaciones: costo_total_simulaciones},
-            {cant_solicitudes: cant_solicitudes},
-            {costo_total_solicitudes: costo_total_solicitudes}
+            {name : "cant_simulaciones", pv : cant_simulaciones},
+            {name : "costo_total_simulaciones", pv : costo_total_simulaciones},
+            {name : "cant_solicitudes", pv : cant_solicitudes},
+            {name : "costo_total_solicitudes", pv: costo_total_solicitudes}
         ];
     } catch (error) {
         console.log(error);
