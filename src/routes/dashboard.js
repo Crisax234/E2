@@ -43,7 +43,6 @@ router.get('dashboard.show', '/', async (ctx) => {
                 categoriaNeumatico += 1;
             } 
         }
-
         ctx.body = [
             [{name : "cant_simulaciones", pv : cant_simulaciones},
             {name : "cant_solicitudes", pv : cant_solicitudes}],[
@@ -51,13 +50,13 @@ router.get('dashboard.show', '/', async (ctx) => {
             {name : "costo_total_simulaciones", pv : costo_total_simulaciones},
             {name : "costo_total_solicitudes", pv: costo_total_solicitudes}],
 
-            [{name : "categoriaIntercooler", pv : categoriaIntercooler},
-            {name : "categoriaTurbo", pv : categoriaTurbo},
-            {name : "categoriaChargepipe", pv : categoriaChargepipe}],
+            [{name : "Intercooler", value : categoriaIntercooler},
+            {name : "Turbo", value : categoriaTurbo},
+            {name : "ChargePipe", value : categoriaChargepipe}],
             
-            [{name : "categoriaCapot", pv : categoriaCapot},
-            {name : "categoriaLlanta", pv : categoriaLlanta},
-            {name : "categoriaNeumatico", pv : categoriaNeumatico}]
+            [{name : "Capot", value : categoriaCapot},
+            {name : "Llanta", value : categoriaLlanta},
+            {name : "Neumatico", value : categoriaNeumatico}]
         ];
     } catch (error) {
         console.log(error);
