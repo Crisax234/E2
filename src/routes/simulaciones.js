@@ -77,38 +77,66 @@ router.get('simulaciones.show', '/showone/:id', async (ctx) => {
   try {
       const simulacion = await ctx.orm.Simulacion.findByPk(ctx.params.id);
       const intercooler = await ctx.orm.Performance.findByPk(simulacion.intercoolerId);
+      var intercoolerNombre = null
+      if (intercooler){
+        intercoolerNombre = intercooler.nombre;
+      }
       const turbo = await ctx.orm.Performance.findByPk(simulacion.turboId);
+      var turboNombre = null
+      if (turbo){
+        turboNombre = turbo.nombre;
+      }
       const chargePipe = await ctx.orm.Performance.findByPk(simulacion.chargepipeId);
+      var chargePipeNombre = null
+      if (chargePipe){
+        chargePipeNombre = chargePipe.nombre;
+      }
       const capot = await ctx.orm.Look.findByPk(simulacion.capotId);
+      var capotNombre = null
+      if (capot){
+        capotNombre = capot.nombre;
+      }
       const neumatico = await ctx.orm.Look.findByPk(simulacion.neumaticoId);
+      var neumaticoNombre = null
+      if (neumatico){
+        neumaticoNombre = neumatico.nombre;
+      }
       const llanta = await ctx.orm.Look.findByPk(simulacion.llantaId);
+      var llantaNombre = null
+      if (llanta){
+        llantaNombre = llanta.nombre;
+      }
       body_envio = {
         id_simulacion: simulacion.id_simulacion,
         id_solicitud: simulacion.id_solicitud,
         id_mecanico: simulacion.id_mecanico,
-        nombre_mecanico: simulacion.mecanic.nombre,
         id_car: simulacion.id_car,
-        nombre_auto: simulacion.car.nombre,
         hp: simulacion.hp,
         torque: simulacion.torque,
         costo: simulacion.costo,
         
         // Piezas, inicialmente como Null y se van agregando o cambiando, a medida que se hacen las request
         intercoolerId: simulacion.intercoolerId,
-        intercoolerNombre: intercooler.nombre,
+        intercoolerName: intercoolerNombre,
+
         chargepipeId: simulacion.chargepipeId,
-        chargepipeNombre: chargePipe.nombre,
+        chargepipeName: chargePipeNombre,
+        
         turboId: simulacion.turboId,
-        turboNombre: turbo.nombre,
+        turboName: turboNombre,
+        
         capotId: simulacion.capotId,
-        capotNombre: capot.nombre,
+        capotName: capotNombre,
+        
         llantaId: simulacion.llantaId,
-        llantaNombre: llanta.nombre,
+        llantaName: llantaNombre,
+        
         neumaticoId: simulacion.neumaticoId,
-        neumaticoNombre: neumatico.nombre,
+        neumaticoName: neumaticoNombre,
+        
         estado: simulacion.estado,
       };
-      ctx.body = simulacion;
+      ctx.body = body_envio;
   } catch (error) {
       console.log(error);
       ctx.throw(404);
