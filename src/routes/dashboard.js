@@ -15,12 +15,12 @@ router.get('dashboard.show', '/', async (ctx) => {
         for (let step = 0; step < cant_solicitudes; step++) {
             costo_total_solicitudes += solicitudes[step].presupuesto;
         }
-        ctx.body = {
-            cant_simulaciones: cant_simulaciones,
-            costo_total_simulaciones: costo_total_simulaciones,
-            cant_solicitudes: cant_solicitudes,
-            costo_total_solicitudes: costo_total_solicitudes,
-        };
+        ctx.body = [
+            {cant_simulaciones: cant_simulaciones},
+            {costo_total_simulaciones: costo_total_simulaciones},
+            {cant_solicitudes: cant_solicitudes},
+            {costo_total_solicitudes: costo_total_solicitudes}
+        ];
     } catch (error) {
         console.log(error);
         ctx.throw(404);
