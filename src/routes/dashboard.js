@@ -16,9 +16,11 @@ router.get('dashboard.show', '/cantidad', async (ctx) => {
             costo_total_solicitudes += solicitudes[step].presupuesto;
         }
         ctx.body = [
-            {name : "cant_simulaciones", pv : cant_simulaciones},
-            {name : "cant_solicitudes", pv : cant_solicitudes},
-  
+            [{name : "cant_simulaciones", pv : cant_simulaciones},
+            {name : "cant_solicitudes", pv : cant_solicitudes}],[
+
+            {name : "costo_total_simulaciones", pv : costo_total_simulaciones},
+            {name : "costo_total_solicitudes", pv: costo_total_solicitudes}]
         ];
     } catch (error) {
         console.log(error);
@@ -40,8 +42,7 @@ router.get('dashboard.show', '/costo', async (ctx) => {
             costo_total_solicitudes += solicitudes[step].presupuesto;
         }
         ctx.body = [
-            {name : "costo_total_simulaciones", pv : costo_total_simulaciones},
-            {name : "costo_total_solicitudes", pv: costo_total_solicitudes}
+            
         ];
     } catch (error) {
         console.log(error);
