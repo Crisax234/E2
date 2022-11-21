@@ -20,6 +20,31 @@ module.exports = {
         type: Sequelize.INTEGER,
         references: {model: 'Solicituds', key: 'id'},
       },
+      intercoolerId: {
+        type: Sequelize.INTEGER,
+        references: { model: 'Performances', key: 'id' },
+      },
+      chargepipeId: {
+        type: Sequelize.INTEGER,
+        references: { model: 'Performances', key: 'id' },
+      },
+      turboId: {
+        type: Sequelize.INTEGER,
+        references: { model: 'Performances', key: 'id' },
+      },
+      capotId: {
+        type: Sequelize.INTEGER,
+        references: { model: 'Looks', key: 'id' },
+      },
+      llantaId: {
+        type: Sequelize.INTEGER,
+        references: { model: 'Looks', key: 'id' },
+      },
+      neumaticoId: {
+        type: Sequelize.INTEGER,
+        references: { model: 'Looks', key: 'id' },
+      },
+
       hp: {
         type: Sequelize.INTEGER
       },

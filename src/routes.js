@@ -8,6 +8,8 @@ const auth = require('./routes/auth');
 const protected = require('./routes/protected');
 const solicitudes = require('./routes/solicitudes');
 const pieza_simulacions = require('./routes/pieza_simulacions');
+const piezas = require('./routes/piezas');
+const dashboard = require('./routes/dashboard');
 const jwt = require('koa-jwt');
 
 
@@ -21,6 +23,8 @@ router.use('/managers', auth_middle, managers.routes());
 router.use('/tecnics', auth_middle, tecnics.routes());
 router.use('/solicitudes', auth_middle, solicitudes.routes());
 router.use('/pieza_simulacions', auth_middle, pieza_simulacions.routes());
+router.use('/piezas', auth_middle, piezas.routes());
+router.use('/dashboard', auth_middle, dashboard.routes());
 
 router.use(jwt({ secret: process.env.JWT_SECRET, key: 'tokendata' }));
 

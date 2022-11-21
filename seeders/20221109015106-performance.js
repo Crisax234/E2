@@ -44,18 +44,6 @@ module.exports = {
       createdAt: new Date(),
       updatedAt: new Date(),
       },
-      {
-      id: "4",
-      chasis_compatible: "WBALM1567",
-      nombre: "Bujias NGK laser iridium",
-      categoria: "Bujias",
-      hp: 5,
-      torque: 3,
-      precio: 120000,
-      createdAt: new Date(),
-      updatedAt: new Date(),
-      }
-
   ]),
   down: (queryInterface) => queryInterface.bulkDelete('Performances', null, {}),
 };

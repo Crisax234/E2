@@ -19,6 +19,8 @@ router.get('simulaciones.show', '/', async (ctx) => {
         include: [
             { model: ctx.orm.Mecanic },
             { model: ctx.orm.Car },
+            { model: ctx.orm.Performance },
+            { model: ctx.orm.Look },
           ],
         });
         ctx.body = simulacion;
@@ -27,6 +29,8 @@ router.get('simulaciones.show', '/', async (ctx) => {
         include: [
             { model: ctx.orm.Mecanic },
             { model: ctx.orm.Car },
+            { model: ctx.orm.Performance },
+            { model: ctx.orm.Look },
           ],
         });
         ctx.body = simulacion;
@@ -35,6 +39,8 @@ router.get('simulaciones.show', '/', async (ctx) => {
         include: [
             { model: ctx.orm.Mecanic },
             { model: ctx.orm.Car },
+            { model: ctx.orm.Performance },
+            { model: ctx.orm.Look },
           ],
         });
         ctx.body = simulacion;
@@ -55,6 +61,8 @@ router.get('simulaciones.show', '/all', async (ctx) => {
           { model: ctx.orm.Solicitud },
           { model: ctx.orm.Mecanic },
           { model: ctx.orm.Car },
+          { model: ctx.orm.Performance },
+          { model: ctx.orm.Look },
         ],
       });
       ctx.body = simulacion;
@@ -65,9 +73,41 @@ router.get('simulaciones.show', '/all', async (ctx) => {
   }
 });
 //para mostrar una simulacion en especifico
-router.get('simulaciones.show', '/showone/:id_simulacion', async (ctx) => {
+router.get('simulaciones.show', '/showone/:id', async (ctx) => {
   try {
-      const simulacion = await ctx.orm.Simulacion.findByPk(ctx.params.id_simulacion);
+      const simulacion = await ctx.orm.Simulacion.findByPk(ctx.params.id);
+      const intercooler = await ctx.orm.Performance.findByPk(simulacion.intercoolerId);
+      const turbo = await ctx.orm.Performance.findByPk(simulacion.turboId);
+      const chargePipe = await ctx.orm.Performance.findByPk(simulacion.chargepipeId);
+      const capot = await ctx.orm.Look.findByPk(simulacion.capotId);
+      const neumatico = await ctx.orm.Look.findByPk(simulacion.neumaticoId);
+      const llanta = await ctx.orm.Look.findByPk(simulacion.llantaId);
+      body_envio = {
+        id_simulacion: simulacion.id_simulacion,
+        id_solicitud: simulacion.id_solicitud,
+        id_mecanico: simulacion.id_mecanico,
+        nombre_mecanico: simulacion.mecanic.nombre,
+        id_car: simulacion.id_car,
+        nombre_auto: simulacion.car.nombre,
+        hp: simulacion.hp,
+        torque: simulacion.torque,
+        costo: simulacion.costo,
+        
+        // Piezas, inicialmente como Null y se van agregando o cambiando, a medida que se hacen las request
+        intercoolerId: simulacion.intercoolerId,
+        intercoolerNombre: intercooler.nombre,
+        chargepipeId: simulacion.chargepipeId,
+        chargepipeNombre: chargePipe.nombre,
+        turboId: simulacion.turboId,
+        turboNombre: turbo.nombre,
+        capotId: simulacion.capotId,
+        capotNombre: capot.nombre,
+        llantaId: simulacion.llantaId,
+        llantaNombre: llanta.nombre,
+        neumaticoId: simulacion.neumaticoId,
+        neumaticoNombre: neumatico.nombre,
+        estado: simulacion.estado,
+      };
       ctx.body = simulacion;
   } catch (error) {
       console.log(error);
@@ -103,4 +143,6 @@ router.post('simulaciones.create', '/', async (ctx) => {
     ctx.throw(error);
   }
 });
+
+
 module.exports = router;

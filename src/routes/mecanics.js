@@ -7,8 +7,7 @@ router.get('mecanics.show', '/', async (ctx) => {
     const mecanics = await ctx.orm.Mecanic.findALL(
       {
         include: [
-          { model: ctx.orm.Play },
-          { mode: ctx.orm.Simulacion },
+          { model: ctx.orm.Simulacion },
         ],
       },
     );

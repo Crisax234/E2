@@ -19,8 +19,23 @@ module.exports = (sequelize, DataTypes) => {
       this.belongsTo(models.Solicitud, {
         foreignKey: 'id_solicitud',
       });
-      this.hasMany(models.Pieza_simulacion, {
-        foreignKey: 'id_simulacion',
+      this.belongsTo(models.Performance, {
+        foreignKey: 'intercoolerId',
+      });
+      this.belongsTo(models.Performance, {
+        foreignKey: 'chargepipeId',
+      });
+      this.belongsTo(models.Performance, {
+        foreignKey: 'turboId',
+      });
+      this.belongsTo(models.Look, {
+        foreignKey: 'capotId',
+      });
+      this.belongsTo(models.Look, {
+        foreignKey: 'llantaId',
+      });
+      this.belongsTo(models.Look, {
+        foreignKey: 'neumaticoId',
       });
     }
   }
@@ -28,7 +43,14 @@ module.exports = (sequelize, DataTypes) => {
     hp: DataTypes.INTEGER,
     torque: DataTypes.INTEGER,
     costo: DataTypes.INTEGER,
-    estado: DataTypes.BOOLEAN
+    estado: DataTypes.BOOLEAN,
+    // Piezas, inicialmente como Null y se van agregando o cambiando, a medida que se hacen las request
+    intercoolerId: DataTypes.INTEGER,
+    chargepipeId: DataTypes.INTEGER,
+    turboId: DataTypes.INTEGER,
+    capotId: DataTypes.INTEGER,
+    llantaId: DataTypes.INTEGER,
+    neumaticoId: DataTypes.INTEGER
   }, {
     sequelize,
     modelName: 'Simulacion',
