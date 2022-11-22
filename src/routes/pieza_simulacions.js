@@ -266,9 +266,9 @@ router.post('pieza_simulacions.create', '/change', async (ctx) => {
                     { model: ctx.orm.Look, required: false },
                 ],
             });
-            var hp_antigua = null;
-            var torque_antigua = null;
-            var precio_antigua = null;
+            var hp_antigua = 0;
+            var torque_antigua = 0;
+            var precio_antigua = 0;
 
             if (ctx.request.body.categoria == "Intercooler"){
                 
@@ -319,23 +319,23 @@ router.post('pieza_simulacions.create', '/change', async (ctx) => {
                     { model: ctx.orm.Look, required: false },
                 ],
             });
-            var precio_antigua = null;
+            var precio_antigua = 0;
             if (ctx.request.body.categoria == "Llanta"){
                 
-                const pieza_antigua = await ctx.orm.Performance.findByPk(simulacion_actual_modificar.llantaId);
+                const pieza_antigua = await ctx.orm.Look.findByPk(simulacion_actual_modificar.llantaId);
                 precio_antigua = pieza_antigua.precio;
                 simulacion_actual_modificar.llantaId = null;
                 eliminar_pieza = true;
                 
             }else if(ctx.request.body.categoria == "Neumatico"){
-                const pieza_antigua = await ctx.orm.Performance.findByPk(simulacion_actual_modificar.neumaticoId);
+                const pieza_antigua = await ctx.orm.Look.findByPk(simulacion_actual_modificar.neumaticoId);
                 precio_antigua = pieza_antigua.precio;
                 simulacion_actual_modificar.neumaticoId = null;
                 eliminar_pieza = true;
                 
 
             }else if(ctx.request.body.categoria == "Capot"){
-                const pieza_antigua = await ctx.orm.Performance.findByPk(simulacion_actual_modificar.capotId);
+                const pieza_antigua = await ctx.orm.Look.findByPk(simulacion_actual_modificar.capotId);
                 precio_antigua = pieza_antigua.precio;
                 simulacion_actual_modificar.capotId = null;
                 eliminar_pieza = true;
