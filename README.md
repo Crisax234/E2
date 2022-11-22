@@ -25,3 +25,7 @@ En caso de querer la app en otro puerto se lo agregamos al .env
 La api esta docuemntada en postman actualmente, puedes revisarla en el siguiente link
 
 https://documenter.getpostman.com/view/24277246/2s8YmULKKs#b57610c3-b0e7-449f-a30f-8a97d6b9bf95
+
+Video Tutorial de nuestra aplicacion
+
+https://www.loom.com/share/ae39e77295074633ac0d38c5165f27a9
