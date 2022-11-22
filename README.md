@@ -22,6 +22,6 @@ luego ejecutamos los siquientes comandos:
 Con esto tendriamos nuestra app corriendo en el puerto 4000
 En caso de querer la app en otro puerto se lo agregamos al .env
 
-La api esta docuemntada en postman actualmente
+La api esta docuemntada en postman actualmente, puedes revisarla en el siguiente link
 
-[![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/c51273daba3ff7a3c4cb?action=collection%2Fimport)
+https://documenter.getpostman.com/view/24277246/2s8YmULKKs#b57610c3-b0e7-449f-a30f-8a97d6b9bf95
