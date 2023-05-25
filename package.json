@@ -9,7 +9,7 @@
   "license": "MIT",
   "scripts": {
     "start": "node src/index.js",
-    "dev": "yarn nodemon src/index.js"
+    "dev": "nodemon src/index.js"
   },
   "dependencies": {
     "@koa/cors": "^3.4.1",
@@ -23,7 +23,8 @@
     "koa-session": "^6.2.0",
     "pg": "^8.8.0",
     "sequelize": "^6.21.6",
-    "sequelize-cli": "^6.4.1"
+    "sequelize-cli": "^6.4.1",
+    "mqtt": "^4.3.7"
   },
   "devDependencies": {
     "eslint": "^7.32.0 || ^8.2.0",

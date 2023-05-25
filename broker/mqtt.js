@@ -1,5 +1,5 @@
 const mqtt = require('mqtt');
-const { createEvent } = require('./index.controller');
+const { createEvent, validateRequest } = require('./index.controller');
 const { v4: uuidv4 } = require('uuid');
 const options = {
   // Clean session
@@ -25,15 +25,8 @@ const url = 'mqtt://passline.iic2173.net:9000';
 // const url = 'mqtt://broker.emqx.io:1883'
 
 // Create an MQTT client instance
-const options = {
-  // Clean session
-  clean: true,
-  connectTimeout: 4000,
-  // Authentication
-  clientId: 'grupo6',
-  username: 'students',
-  password: 'iic2173-2023-1-students',
-};
+
+
 
 const client = mqtt.connect(url, options);
 
@@ -83,8 +76,16 @@ client.on('connect', function () {
 
       const response = JSON.parse(message);
       const { request_id, group_id, valid } = response;
-      console.log(`Received validation response for request ${request_id}, group ${group_id}: ${valid ? 'valid' : 'invalid'}`);
+      console.log(`Received validation response for request ${request_id}, 
+      group ${group_id}: 
+      ${valid ? 'valid' : 'invalid'}`);
       // Handle the validation response in your code
+      if (group_id === '6' && valid) {
+        validateRequest(request_id);
+
+      } else {
+        console.log('Request invalid');
+      }
     }
   });
 });

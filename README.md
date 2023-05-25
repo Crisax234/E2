@@ -6,9 +6,11 @@ DB_USER = web_user
 DB_PASSWORD = 12345678
 DB_NAME = web_db
 DB_HOST = 127.0.0.1
-APP_KEYS = llavesecreta
-SECRET_KEY = llavesecreta
-JWT_SECRET = llavesecreta
+
+Luego entrar a la carpeta client y crear otro archivo .env con lo siguiente (api corriendo en el puerto 4000)
+
+REACT_APP_SERVER_URL = http://localhost:4000
+
 
 luego ejecutamos los siquientes comandos:
 
@@ -21,11 +23,3 @@ luego ejecutamos los siquientes comandos:
 
 Con esto tendriamos nuestra app corriendo en el puerto 4000
 En caso de querer la app en otro puerto se lo agregamos al .env
-
-La api esta docuemntada en postman actualmente, puedes revisarla en el siguiente link
-
-https://documenter.getpostman.com/view/24277246/2s8YmULKKs#b57610c3-b0e7-449f-a30f-8a97d6b9bf95
-
-Video Tutorial de nuestra aplicacion
-
-https://www.loom.com/share/ae39e77295074633ac0d38c5165f27a9

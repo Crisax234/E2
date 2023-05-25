@@ -11,7 +11,7 @@ const app = new Koa();
 app.context.orm = orm;
 
 //app.use(cors(({ credentials: true })));
-app.use(cors());
+app.use(cors(({ credentials: true })));
 // Logs requests from the server
 app.use(KoaLogger());
 
