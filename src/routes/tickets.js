@@ -42,6 +42,9 @@ router.post('tickets.buy','/buy', async (ctx) => {
   try {
     const quantity = ctx.request.body.quantity;
     if (quantity > 0){ 
+
+      //LLamar api de pagos y obtener deposit token
+
     const newMessage = {
       request_id: uuidv4(),
       group_id: '6',
@@ -103,7 +106,7 @@ router.post('tickets.validation','/validation', async (ctx) => {
     else{
       ctx.status = 201;
       
-      ctx.body = {message: "Transaccion no aceptsssada"};
+      ctx.body = {message: "Transaccion no aceptada"};
     }
   } catch (error) {
     console.log(error);

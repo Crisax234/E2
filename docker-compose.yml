@@ -1,0 +1,82 @@
+version: '3.8'
+
+services:
+  api:
+    build: .
+    ports:
+      - 4000:4000
+    depends_on:
+      - db
+    environment:
+      - .env
+    volumes:
+      - .:/app
+      - /app/node_modules
+    networks:
+      - backend
+
+  broker:
+    build: ./broker
+    depends_on:
+      - db
+      - api
+    environment:
+      - ./.env
+    volumes:
+      - .:/broker
+      - /broker/node_modules
+    networks:
+      - backend
+
+  db:
+    image: postgres
+    expose:
+      - 5432
+    environment:
+      - POSTGRES_DB=${DB_NAME}
+      - POSTGRES_USER=${DB_USER}
+      - POSTGRES_PASSWORD=${DB_PASSWORD}
+    networks:
+      - backend
+  redis:
+    # https://redis.com/solutions/use-cases/messaging/
+    image: redis:7
+    volumes:
+      - ./redis/redis.conf:/usr/local/etc/redis/redis.conf
+  
+  job_master:
+    build:
+        context: ./workers
+        dockerfile: Dockerfile
+    command: uvicorn main:app --reload --host 0.0.0.0 --port 8000
+    volumes:
+      - ./workers:/opt/
+    expose:
+      - 8000
+    ports:
+      - 8000:8000
+    env_file:
+      - ./.env
+    depends_on:
+      - redis
+
+  celery_worker:
+    build:
+      context: ./workers
+      dockerfile: Dockerfile
+    deploy:
+      # replicas scales containers
+      replicas: 2
+    # concurrency specifies number of worker
+    # purge deletes the broker queue every time it starts up
+    command: celery -A main.celery_app worker --loglevel=INFO --purge --concurrency=1
+    volumes:
+      - ./workers:/opt/
+    depends_on:
+      - job_master
+    env_file:
+      - ./.env
+
+
+networks:
+  backend:

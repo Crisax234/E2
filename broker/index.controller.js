@@ -14,7 +14,7 @@ const createEvent = async (params) => {
         const event_id = myObj["event_id"];
         //const data = [name, date, price, quantity, location, latitude, longitude, event_id];
         // create a post with axios to create a ticket
-        const response = await axios.post('http://localhost:4000/tickets/', {
+        const response = await axios.post('http://api:4000/tickets', {
             name: name,
             date: date,
             price: price,
