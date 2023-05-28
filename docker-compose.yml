@@ -76,6 +76,19 @@ services:
       - job_master
     env_file:
       - ./.env
+  
+  webserver:
+    image: nginx:mainline-alpine
+    container_name: nginx
+    restart: unless-stopped
+    ports:
+      - "80:80"
+    volumes:
+      - ./nginx-conf:/etc/nginx/conf.d
+    depends_on:
+      - api
+    networks:
+      - backend
 
 
 networks:
