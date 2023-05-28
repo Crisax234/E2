@@ -10,8 +10,8 @@ export const SERVER_URL = process.env.REACT_APP_SERVER_URL;
 const ShowTickets = () => {
   const [ticket, setTicket] = useState([]);
   const getData = async () => {
-        //const { data } = await axios.get(`${SERVER_URL}/tickets`);
-        const {data} = await axios.get('https://10iy41uzu8.execute-api.us-east-2.amazonaws.com/v1/tickets');
+        const { data } = await axios.get(`${SERVER_URL}/tickets`);
+        //const {data} = await axios.get('https://10iy41uzu8.execute-api.us-east-2.amazonaws.com/v1/tickets');
     return data;
   }
 
