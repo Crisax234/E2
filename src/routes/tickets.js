@@ -3,6 +3,10 @@ const { v4: uuidv4 } = require('uuid');
 const router = new Router();
 const mqtt = require('mqtt');
 const url = 'mqtt://passline.iic2173.net:9000';
+//import axios
+const axios = require('axios')
+
+
 const options = {
   // Clean session
   clean: true,
@@ -45,14 +49,27 @@ router.post('tickets.buy','/buy', async (ctx) => {
 
       //LLamar api de pagos y obtener deposit token
 
+    const response = await axios.post('https://api.legit.capital/v1/payments', {
+        group_id: 6,
+        seller: 0,
+        event_id: ctx.request.body.event_id,
+        quantity: quantity,
+        value: 0
+    });
+    
+    const worker = await axios.post('https://localhost:8000/job', {
+      response});
+
     const newMessage = {
       request_id: uuidv4(),
       group_id: '6',
       event_id: ctx.request.body.event_id,
-      deposit_token: '',
+      deposit_token: response.deposit_token,
       quantity: quantity,
       seller: 0,
     };
+
+
     const client = mqtt.connect(url, options);
     client.on('connect', function () {
       console.log('Connected');
